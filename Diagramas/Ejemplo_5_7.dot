@@ -1,0 +1,35 @@
+digraph Ejemplo_5_7 {
+    // Configuración general
+    graph [bgcolor=transparent, rankdir=TB, splines=ortho]
+    node [shape=box, style=filled, fillcolor=lightblue, fontname="Arial"]
+    edge [fontname="Arial", fontsize=10]
+    
+    // Nodos terminales
+    start [label="Inicio", shape=oval, fillcolor=lightgreen]
+    end [label="Fin", shape=oval, fillcolor=lightcoral]
+    
+    // Entrada inicial
+    input1 [label="Ingrese el nombre\ndel estado", shape=parallelogram]
+    store [label="nombre = entrada"]
+    
+    // Inicialización
+    init [label="totalLluvias = 0\ni = 0"]
+    
+    // Loop
+    loop [label="i < 12?", shape=diamond, fillcolor=lightyellow]
+    inputLluvia [label="Ingrese lluvias\ndel mes i+1", shape=parallelogram]
+    storeLluvia [label="llumen[i] = entrada"]
+    sum [label="totalLluvias += llumen[i]"]
+    inc [label="i++"]
+    
+    // Salida
+    output [label="Mostrar: El total de lluvias\nen nombre es totalLluvias", shape=parallelogram]
+    
+    // Conexiones
+    start -> input1 -> store -> init -> loop
+    loop -> inputLluvia [label="Sí"]
+    loop -> output [label="No"]
+    
+    inputLluvia -> storeLluvia -> sum -> inc -> loop
+    output -> end
+}

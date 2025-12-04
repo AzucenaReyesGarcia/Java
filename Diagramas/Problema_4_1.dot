@@ -1,0 +1,60 @@
+digraph Problema_4_1 {
+    // Configuración general
+    graph [bgcolor=transparent, rankdir=TB, splines=ortho]
+    node [shape=box, style=filled, fillcolor=lightblue, fontname="Arial"]
+    edge [fontname="Arial", fontsize=10]
+    
+    // Nodos terminales
+    start [label="Inicio", shape=oval, fillcolor=lightgreen]
+    end [label="Fin", shape=oval, fillcolor=lightcoral]
+    
+    // Nodos de proceso
+    msg [label="Mostrar: Problema 4.1", shape=parallelogram]
+    input [label="Ingrese cantidad de valores\n(JOptionPane)", shape=parallelogram]
+    store [label="valorArray = entrada"]
+    
+    // Decisión de validación
+    check [label="valorArray >= 1\nAND\nvalorArray <= 500?", shape=diamond, fillcolor=lightyellow]
+    
+    // Rama válida
+    createArray [label="Crear array[valorArray]"]
+    initI1 [label="i = 0"]
+    loopFill [label="i < array.length?", shape=diamond, fillcolor=lightyellow]
+    random [label="array[i] = random(1-100)"]
+    incI1 [label="i++"]
+    
+    initI2 [label="i = 0"]
+    loopPrint [label="i < array.length?", shape=diamond, fillcolor=lightyellow]
+    printVal [label="Imprimir: array[i] + ','", shape=parallelogram]
+    incI2 [label="i++"]
+    newline [label="Imprimir nueva línea", shape=parallelogram]
+    
+    // Rama inválida
+    error [label="Mostrar: La cantidad debe\nestar entre 1 y 500", shape=parallelogram, fillcolor=lightpink]
+    
+    // Conexiones
+    start -> msg
+    msg -> input
+    input -> store
+    store -> check
+    
+    check -> createArray [label="Sí"]
+    check -> error [label="No"]
+    
+    createArray -> initI1
+    initI1 -> loopFill
+    loopFill -> random [label="Sí"]
+    random -> incI1
+    incI1 -> loopFill
+    
+    loopFill -> initI2 [label="No"]
+    initI2 -> loopPrint
+    loopPrint -> printVal [label="Sí"]
+    printVal -> incI2
+    incI2 -> loopPrint
+    
+    loopPrint -> newline [label="No"]
+    newline -> end
+    
+    error -> end
+}

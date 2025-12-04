@@ -1,0 +1,43 @@
+digraph PS_4_17 {
+    // Configuración general
+    graph [bgcolor=transparent, rankdir=TB, splines=ortho]
+    node [shape=box, style=filled, fillcolor=lightblue, fontname="Arial"]
+    edge [fontname="Arial", fontsize=10]
+    
+    // Nodos terminales
+    start [label="Inicio", shape=oval, fillcolor=lightgreen]
+    end [label="Fin", shape=oval, fillcolor=lightcoral]
+    
+    // Mensaje inicial
+    print [label="Mostrar: Tabla de\nmultiplicar del 1 al 10", shape=parallelogram]
+    
+    // Inicialización loop externo
+    initI [label="i = 1"]
+    loopI [label="i <= 10?", shape=diamond, fillcolor=lightyellow]
+    
+    // Inicialización loop interno
+    initJ [label="j = 1"]
+    loopJ [label="j <= 10?", shape=diamond, fillcolor=lightyellow]
+    
+    // Cálculo y salida
+    calc [label="resultado = i * j"]
+    output [label="Mostrar: i x j = resultado", shape=parallelogram]
+    incJ [label="j++"]
+    
+    // Nueva línea e incremento externo
+    newline [label="Imprimir nueva línea", shape=parallelogram]
+    incI [label="i++"]
+    
+    // Conexiones
+    start -> print -> initI -> loopI
+    
+    loopI -> initJ [label="Sí"]
+    loopI -> end [label="No"]
+    
+    initJ -> loopJ
+    loopJ -> calc [label="Sí"]
+    loopJ -> newline [label="No"]
+    
+    calc -> output -> incJ -> loopJ
+    newline -> incI -> loopI
+}

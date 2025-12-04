@@ -1,0 +1,36 @@
+digraph Ejemplo_3_1 {
+    // Configuración general
+    graph [bgcolor=transparent, rankdir=TB, splines=ortho]
+    node [shape=box, style=filled, fillcolor=lightblue, fontname="Arial"]
+    edge [fontname="Arial", fontsize=10]
+    
+    // Nodos terminales
+    start [label="Inicio", shape=oval, fillcolor=lightgreen]
+    end [label="Fin", shape=oval, fillcolor=lightcoral]
+    
+    // Mensaje inicial
+    msg [label="Ingrese los sueldos de\nlos 10 trabajadores", shape=parallelogram]
+    
+    // Entradas (simplificado mostrando patrón)
+    input1 [label="Sueldo del trabajador 1", shape=parallelogram]
+    s1 [label="SUE1 = entrada"]
+    input2 [label="Sueldo del trabajador 2", shape=parallelogram]
+    s2 [label="SUE2 = entrada"]
+    input3 [label="Sueldo del trabajador 3", shape=parallelogram]
+    s3 [label="SUE3 = entrada"]
+    dots1 [label="...", shape=plaintext, fillcolor=none]
+    input10 [label="Sueldo del trabajador 10", shape=parallelogram]
+    s10 [label="SUE10 = entrada"]
+    
+    // Suma
+    sum [label="NOMINA = SUE1 + SUE2 +\n... + SUE10"]
+    
+    // Salida
+    output [label="Mostrar:\nTotal de la nómina = NOMINA", shape=parallelogram]
+    
+    // Conexiones
+    start -> msg
+    msg -> input1 -> s1 -> input2 -> s2 -> input3 -> s3
+    s3 -> dots1 -> input10 -> s10
+    s10 -> sum -> output -> end
+}

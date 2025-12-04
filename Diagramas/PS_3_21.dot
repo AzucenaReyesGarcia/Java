@@ -1,0 +1,78 @@
+digraph PS_3_21 {
+    // Configuración general
+    graph [bgcolor=transparent, rankdir=TB, splines=ortho]
+    node [shape=box, style=filled, fillcolor=lightblue, fontname="Arial", fontsize=10]
+    edge [fontname="Arial", fontsize=9]
+    
+    // Nodos terminales
+    start [label="Inicio", shape=oval, fillcolor=lightgreen]
+    end [label="Fin", shape=oval, fillcolor=lightcoral]
+    
+    // Entrada inicial
+    inputN [label="Ingrese número\nde alumnos N", shape=parallelogram]
+    initArrays [label="Crear arreglos: matriculas[N],\ncarreras[N], semestres[N], promedios[N]"]
+    
+    // Loop de entrada
+    setI1 [label="i = 0"]
+    loopInput [label="i < N?", shape=diamond, fillcolor=lightyellow]
+    inMat [label="Ingrese matrícula\ndel alumno i+1", shape=parallelogram]
+    storeMat [label="matriculas[i] = entrada"]
+    showCarr [label="Mostrar opciones\nde carreras", shape=parallelogram]
+    inCarr [label="Ingrese carrera", shape=parallelogram]
+    storeCarr [label="carreras[i] = entrada"]
+    inSem [label="Ingrese semestre", shape=parallelogram]
+    storeSem [label="semestres[i] = entrada"]
+    inProm [label="Ingrese promedio", shape=parallelogram]
+    storeProm [label="promedios[i] = entrada"]
+    incI1 [label="i++"]
+    
+    // Mensaje
+    msg [label="Alumnos candidatos a\nFacultad Menor", shape=parallelogram]
+    
+    // Loop de verificación
+    setI2 [label="i = 0"]
+    loopCheck [label="i < N?", shape=diamond, fillcolor=lightyellow]
+    initFlag [label="esCandidato = false"]
+    
+    // Verificaciones
+    checkEco [label="carrera[i]==1 Y\nsem[i]>5 Y prom[i]>8.5?", shape=diamond, fillcolor=lightyellow]
+    checkAdm [label="carrera[i]==2 Y\nsem[i]>6 Y prom[i]>8.8?", shape=diamond, fillcolor=lightyellow]
+    checkCont [label="carrera[i]==3 Y\nsem[i]>6 Y prom[i]>8.5?", shape=diamond, fillcolor=lightyellow]
+    checkIng [label="carrera[i]==4 Y\nsem[i]>6 Y prom[i]>8.8?", shape=diamond, fillcolor=lightyellow]
+    
+    setTrue [label="esCandidato = true", fillcolor=lightgreen]
+    
+    // Mostrar candidato
+    showCand [label="esCandidato?", shape=diamond, fillcolor=lightyellow]
+    getNombre [label="Determinar nombreCarrera\nsegún carreras[i]"]
+    outData [label="Mostrar datos del candidato", shape=parallelogram]
+    incI2 [label="i++"]
+    
+    // Conexiones principales
+    start -> inputN -> initArrays -> setI1 -> loopInput
+    
+    loopInput -> inMat [label="Sí"]
+    loopInput -> msg [label="No"]
+    
+    inMat -> storeMat -> showCarr -> inCarr -> storeCarr
+    storeCarr -> inSem -> storeSem -> inProm -> storeProm -> incI1 -> loopInput
+    
+    msg -> setI2 -> loopCheck
+    loopCheck -> initFlag [label="Sí"]
+    loopCheck -> end [label="No"]
+    
+    initFlag -> checkEco
+    checkEco -> setTrue [label="Sí"]
+    checkEco -> checkAdm [label="No"]
+    checkAdm -> setTrue [label="Sí"]
+    checkAdm -> checkCont [label="No"]
+    checkCont -> setTrue [label="Sí"]
+    checkCont -> checkIng [label="No"]
+    checkIng -> setTrue [label="Sí"]
+    checkIng -> showCand [label="No"]
+    
+    setTrue -> showCand
+    showCand -> getNombre [label="Sí"]
+    showCand -> incI2 [label="No"]
+    getNombre -> outData -> incI2 -> loopCheck
+}

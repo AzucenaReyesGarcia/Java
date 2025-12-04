@@ -1,0 +1,82 @@
+digraph Problema_4_12 {
+    // Configuración general
+    graph [bgcolor=transparent, rankdir=TB, splines=ortho]
+    node [shape=box, style=filled, fillcolor=lightblue, fontname="Arial"]
+    edge [fontname="Arial", fontsize=10]
+    
+    // Nodos terminales
+    start [label="Inicio", shape=oval, fillcolor=lightgreen]
+    end [label="Fin", shape=oval, fillcolor=lightcoral]
+    
+    // Entrada y validación
+    input [label="Ingrese dimensión N", shape=parallelogram]
+    store [label="N = entrada"]
+    check [label="N >= 1\nAND\nN <= 50?", shape=diamond, fillcolor=lightyellow]
+    error [label="Mostrar:\nDimensión incorrecta", shape=parallelogram, fillcolor=lightpink]
+    
+    // Creación y llenado de matriz
+    createMatrix [label="Crear matriz A[N][N]"]
+    initI1 [label="I = 0"]
+    loopI1 [label="I < N?", shape=diamond, fillcolor=lightyellow]
+    initJ1 [label="J = 0"]
+    loopJ1 [label="J < N?", shape=diamond, fillcolor=lightyellow]
+    inputElem [label="Ingrese elemento\nA[I+1][J+1]", shape=parallelogram]
+    storeElem [label="A[I][J] = entrada"]
+    incJ1 [label="J++"]
+    incI1 [label="I++"]
+    
+    // Verificación de simetría
+    initCheck [label="BAND = 1\nI = 0"]
+    outerLoop [label="I < N\nAND\nBAND == 1?", shape=diamond, fillcolor=lightyellow]
+    initJ2 [label="J = 0"]
+    innerLoop [label="J <= I\nAND\nBAND == 1?", shape=diamond, fillcolor=lightyellow]
+    compare [label="A[I][J]\n!=\nA[J][I]?", shape=diamond, fillcolor=lightyellow]
+    setFlag [label="BAND = 0", fillcolor=lightpink]
+    incJ2 [label="J++"]
+    incI2 [label="I++"]
+    
+    // Resultado
+    checkResult [label="BAND == 1?", shape=diamond, fillcolor=lightyellow]
+    outputSim [label="Mostrar:\nLa matriz es simétrica", shape=parallelogram, fillcolor=lightgreen]
+    outputNoSim [label="Mostrar:\nLa matriz no es simétrica", shape=parallelogram, fillcolor=lightpink]
+    
+    // Conexiones principales
+    start -> input -> store -> check
+    
+    check -> error [label="No"]
+    check -> createMatrix [label="Sí"]
+    error -> end
+    
+    // Llenado de matriz
+    createMatrix -> initI1 -> loopI1
+    loopI1 -> initJ1 [label="Sí"]
+    loopI1 -> initCheck [label="No"]
+    
+    initJ1 -> loopJ1
+    loopJ1 -> inputElem [label="Sí"]
+    loopJ1 -> incI1 [label="No"]
+    
+    inputElem -> storeElem -> incJ1 -> loopJ1
+    incI1 -> loopI1
+    
+    // Verificación
+    initCheck -> outerLoop
+    outerLoop -> initJ2 [label="Sí"]
+    outerLoop -> checkResult [label="No"]
+    
+    initJ2 -> innerLoop
+    innerLoop -> compare [label="Sí"]
+    innerLoop -> incI2 [label="No"]
+    
+    compare -> setFlag [label="Sí"]
+    compare -> incJ2 [label="No"]
+    setFlag -> incJ2
+    incJ2 -> innerLoop
+    incI2 -> outerLoop
+    
+    // Salida
+    checkResult -> outputSim [label="Sí"]
+    checkResult -> outputNoSim [label="No"]
+    outputSim -> end
+    outputNoSim -> end
+}

@@ -1,0 +1,54 @@
+digraph MayorSueldo {
+    // Configuración general
+    graph [bgcolor=transparent, rankdir=TB, splines=ortho]
+    node [shape=box, style=filled, fillcolor=lightblue, fontname="Arial"]
+    edge [fontname="Arial", fontsize=10]
+    
+    // Nodos terminales
+    start [label="Inicio", shape=oval, fillcolor=lightgreen]
+    end [label="Fin", shape=oval, fillcolor=lightcoral]
+    
+    // Inicialización
+    init [label="maNum = 0\nmaSue = 0"]
+    inputN [label="Ingrese número\nde empleados n", shape=parallelogram]
+    setI [label="i = 1"]
+    
+    // Loop
+    loop [label="i <= n?", shape=diamond, fillcolor=lightyellow]
+    
+    // Entradas del loop
+    inputEmp [label="Ingrese número\nde empleado", shape=parallelogram]
+    storeEmp [label="numEmp = entrada"]
+    inputSue [label="Ingrese el sueldo", shape=parallelogram]
+    storeSue [label="sue = entrada"]
+    
+    // Decisión
+    check [label="sue > maSue?", shape=diamond, fillcolor=lightyellow]
+    update [label="maSue = sue\nmaNum = numEmp"]
+    skip [label=" ", shape=point, width=0.1, fillcolor=black]
+    
+    // BUG
+    bug [label="i = i + 1\n⚠ BUG!", fillcolor=lightpink]
+    incI [label="i++"]
+    
+    // Salidas
+    out1 [label="Mostrar:\nMayor número de empleado = maNum", shape=parallelogram]
+    out2 [label="Mostrar:\nMayor sueldo = maSue", shape=parallelogram]
+    
+    // Conexiones
+    start -> init -> inputN -> setI -> loop
+    
+    loop -> inputEmp [label="Sí"]
+    loop -> out1 [label="No"]
+    
+    inputEmp -> storeEmp -> inputSue -> storeSue -> check
+    
+    check -> update [label="Sí"]
+    check -> skip [label="No"]
+    
+    update -> bug
+    skip -> bug
+    bug -> incI -> loop
+    
+    out1 -> out2 -> end
+}

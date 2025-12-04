@@ -1,0 +1,77 @@
+digraph Alumnos {
+    // Configuración general
+    graph [bgcolor=transparent, rankdir=TB, splines=ortho]
+    node [shape=box, style=filled, fillcolor=lightblue, fontname="Arial", fontsize=10]
+    edge [fontname="Arial", fontsize=9]
+    
+    // Nodos terminales
+    start [label="Inicio", shape=oval, fillcolor=lightgreen]
+    end [label="Fin", shape=oval, fillcolor=lightcoral]
+    
+    // Creación de arreglo
+    createArray [label="Crear arreglo UN1V[7][2][10]\n7 carreras, 2 semestres, 10 años"]
+    
+    // Triple loop para entrada
+    initC [label="carrera = 0"]
+    loopC [label="carrera < 7?", shape=diamond, fillcolor=lightyellow]
+    initS [label="semestre = 0"]
+    loopS [label="semestre < 2?", shape=diamond, fillcolor=lightyellow]
+    initA [label="año = 0"]
+    loopA [label="año < 10?", shape=diamond, fillcolor=lightyellow]
+    
+    inputAlum [label="Ingrese alumnos para\ncarrera+1, semestre+1, año+1", shape=parallelogram]
+    storeAlum [label="UN1V[carrera][semestre][año]\n= entrada"]
+    
+    incA [label="año++"]
+    incS [label="semestre++"]
+    incC [label="carrera++"]
+    
+    // Búsqueda 1: Año con mayor ingreso
+    find1 [label="Buscar año con\nmayor ingreso total", fillcolor=lightyellow]
+    output1 [label="Mostrar:\nAño con mayor ingreso", shape=parallelogram]
+    
+    // Búsqueda 2: Carrera con mayor ingreso en último año
+    find2 [label="Buscar carrera con mayor\ningreso en último año\n(semestre 1, año 9)", fillcolor=lightyellow]
+    output2 [label="Mostrar:\nCarrera con mayor ingreso\nen último año", shape=parallelogram]
+    
+    // Búsqueda 3: Año con mayor ingreso para Economía
+    find3 [label="Buscar año con mayor\ningreso para Economía\n(carrera 1)", fillcolor=lightyellow]
+    output3 [label="Mostrar:\nAño con mayor ingreso\nen Economía", shape=parallelogram]
+    
+    // Búsqueda 4: Semestre con mayor ingreso para Ing. Computación
+    find4 [label="Buscar semestre con mayor\ningreso para Ing. Comp.\n(carrera 4, año 6)", fillcolor=lightyellow]
+    output4 [label="Mostrar:\nSemestre con mayor ingreso\nen Ing. Computación", shape=parallelogram]
+    
+    // Conexiones
+    start -> createArray
+    createArray -> initC
+    
+    initC -> loopC
+    loopC -> initS [label="Sí"]
+    loopC -> find1 [label="No"]
+    
+    initS -> loopS
+    loopS -> initA [label="Sí"]
+    loopS -> incC [label="No"]
+    
+    initA -> loopA
+    loopA -> inputAlum [label="Sí"]
+    loopA -> incS [label="No"]
+    
+    inputAlum -> storeAlum
+    storeAlum -> incA
+    incA -> loopA
+    
+    incS -> loopS
+    incC -> loopC
+    
+    // Búsquedas y salidas
+    find1 -> output1
+    output1 -> find2
+    find2 -> output2
+    output2 -> find3
+    find3 -> output3
+    output3 -> find4
+    find4 -> output4
+    output4 -> end
+}

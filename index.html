@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios de Java - Documentación</title>
+    <link rel="stylesheet" href="styles_desc.css">
+    <style>
+        .flowchart-section {
+            margin: 1.5rem 0;
+        }
+
+        .flowchart-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 1rem auto;
+            background: transparent;
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .data-section {
+            background: var(--color-bg-sidebar);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius-md);
+            margin: 1.5rem 0;
+        }
+
+        .data-list {
+            list-style: none;
+            padding-left: 0;
+            margin: var(--spacing-md) 0;
+        }
+
+        .data-list li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.8rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .data-list li::before {
+            content: "▸";
+            position: absolute;
+            left: 0.2rem;
+            color: var(--color-primary);
+            font-weight: bold;
+        }
+
+        .requirements-list {
+            list-style: disc;
+            padding-left: 1.5rem;
+            margin: var(--spacing-md) 0;
+        }
+
+        .requirements-list li {
+            margin-bottom: 0.6rem;
+            line-height: 1.6;
+        }
+
+        .example-output {
+            background: #282c34;
+            color: #abb2bf;
+            padding: 1rem;
+            border-radius: var(--border-radius-md);
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+            overflow-x: auto;
+            margin: 1rem 0;
+            line-height: 1.5;
+        }
+
+        .example-output .comment {
+            color: #5c6370;
+            font-style: italic;
+        }
+
+        .example-output .input {
+            color: #61afef;
+        }
+
+        .example-output .output {
+            color: #98c379;
+        }
+
+        .section-title {
+            color: var(--color-text);
+            border-bottom: 2px solid var(--color-primary);
+            padding-bottom: 0.4rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="top">
+        <header class="page-header">
+            <h1>Ejercicios de Programación en Java</h1>
+            <p class="subtitle">Documentación completa con diagramas de flujo, requisitos y ejemplos.</p>
+        </header>
+
+        <nav class="exercises-nav">
+            <a href="#ps_1_12" class="nav-link">PS 1.12</a>
+            <a href="#ejemplo_3_1" class="nav-link">Ej 3.1</a>
+            <a href="#ejemplo_4_9" class="nav-link">Ej 4.9</a>
+            <a href="#ejemplo_5_7" class="nav-link">Ej 5.7</a>
+            <a href="#mayor_sueldo" class="nav-link">Mayor Sueldo</a>
+            <a href="#ps_3_21" class="nav-link">PS 3.21</a>
+            <a href="#ps_4_17" class="nav-link">PS 4.17</a>
+            <a href="#problema_4_1" class="nav-link">Prob 4.1</a>
+            <a href="#problema_4_12" class="nav-link">Prob 4.12</a>
+            <a href="#alumnos" class="nav-link">Alumnos</a>
+        </nav>
+
+        <main class="exercises-main">
+
+            <!-- PS_1_12 -->
+            <article id="ps_1_12" class="exercise-card">
+                <header class="exercise-header">
+                    <span class="exercise-badge">Geometría</span>
+                    <h2>PS 1.12: Calcular Área de Triángulo (Java)</h2>
+                    <p class="exercise-description">Construya un programa en Java que, dado como dato las coordenadas de
+                        un triángulo, calcule su área.</p>
+                </header>
+                <div class="exercise-content">
+                    <section class="exercise-main">
+                        <h3 class="section-title">Diagrama de flujo</h3>
+                        <img src="Diagramas/PS_1_12.png" alt="Diagrama PS_1_12" class="flowchart-image">
+
+                        <h3 class="section-title">Datos del Problema</h3>
+                        <div class="data-section">
+                            <ul class="data-list">
+                                <li><strong>Dato de Entrada:</strong> x1, y1, x2, y2, x3, y3</li>
+                                <li><strong>Descripción de Datos (Tipos en Java):</strong> x1, y1, x2, y2, x3, y3:
+                                    <code>double</code> (coordenadas de los 3 vértices)</li>
+                                <li><strong>Salida Esperada:</strong> Área del triángulo</li>
+                            </ul>
+                        </div>
+
+                        <h3 class="section-title">Requisitos de Implementación (Java)</h3>
+                        <ul class="requirements-list">
+                            <li>Crear una clase principal (ej. <code>PS_1_12</code>)</li>
+                            <li>Usar <code>java.util.Scanner</code> para leer las coordenadas</li>
+                            <li>F
+
+                                órmula: <code>area = 0.5 * |x1(y2-y3) + x2(y3-y1) + x3(y1-y2)|</code></li>
+                            <li>Usar <code>Math.abs()</code> para valor absoluto</li>
+                            <li>Imprimir el área con <code>System.out.println()</code></li>
+                        </ul>
+
+                        <h3 class="section-title">Ejemplo de uso esperado</h3>
+                        <pre class="example-output"><span class="comment">(Ejecución 1: Triángulo (0,0), (4,0), (0,3))</span>
+Ingrese las coordenadas de los vértices del triángulo:
+P1 - Coordenada X: <span class="input">0</span>
+P1 - Coordenada Y: <span class="input">0</span>
+P2 - Coordenada X: <span class="input">4</span>
+P2 - Coordenada Y: <span class="input">0</span>
+P3 - Coordenada X: <span class="input">0</span>
+P3 - Coordenada Y: <span class="input">3</span>
+
+<span class="output">El área del triángulo es: 6.0</span></pre>
+                    </section>
+                    <aside class="exercise-sidebar">
+                        <h3>Notas rápidas (Java)</h3>
+                        <p class="note-text">Recuerda que:</p>
+                        <ul>
+                            <li>La fórmula funciona para cualquier triángulo, incluso con coordenadas negativas</li>
+                            <li><code>Math.abs()</code> garantiza que el área sea siempre positiva</li>
+                            <li>Usa <code>double</code> para coordenadas decimales</li>
+                        </ul>
+                    </aside>
+                </div>
+            </article>
+
+            <!-- Ejemplo_3_1 -->
+            <article id="ejemplo_3_1" class="exercise-card">
+                <header class="exercise-header">
+                    <span class="exercise-badge">Arreglos</span>
+                    <h2>Ejemplo 3.1: Cálculo de Nómina (Java)</h2>
+                    <p class="exercise-description">Calcule el total de la nómina sumando los sueldos de 10
+                        trabajadores.</p>
+                </header>
+                <div class="exercise-content">
+                    <section class="exercise-main">
+                        <h3 class="section-title">Diagrama de flujo</h3>
+                        <img src="Diagramas/Ejemplo_3_1.png" alt="Diagrama Ejemplo_3_1" class="flowchart-image">
+
+                        <h3 class="section-title">Datos del Problema</h3>
+                        <div class="data-section">
+                            <ul class="data-list">
+                                <li><strong>Dato de Entrada:</strong> SUE1, SUE2, ..., SUE10</li>
+                                <li><strong>Descripción de Datos:</strong> <code>double[]</code> arreglo de 10 sueldos
+                                </li>
+                                <li><strong>Salida Esperada:</strong> NOMINA (total)</li>
+                            </ul>
+                        </div>
+
+                        <h3 class="section-title">Requisitos de Implementación (Java)</h3>
+                        <ul class="requirements-list">
+                            <li>Usar <code>Scanner</code> para leer sueldos</li>
+                            <li>Declarar arreglo: <code>double[] sueldos = new double[10]</code></li>
+                            <li>Bucle <code>for</code> para solicitar cada sueldo</li>
+                            <li>Sumar todos en variable <code>NOMINA</code></li>
+                            <li>Imprimir total</li>
+                        </ul>
+
+                        <h3 class="section-title">Ejemplo de uso esperado</h3>
+                        <pre class="example-output"><span class="comment">(Ejecución: 10 sueldos)</span>
+Ingrese los sueldos de los 10 trabajadores:
+Sueldo del trabajador 1: <span class="input">2500</span>
+Sueldo del trabajador 2: <span class="input">3000</span>
+Sueldo del trabajador 3: <span class="input">2800</span>
+...
+Sueldo del trabajador 10: <span class="input">3000</span>
+<span class="output">Total de la nómina: $29000.0</span></pre>
+                    </section>
+                    <aside class="exercise-sidebar">
+                        <h3>Notas rápidas (Java)</h3>
+                        <p class="note-text">Recuerda que:</p>
+                        <ul>
+                            <li>Los arreglos tienen tamaño fijo</li>
+                            <li>Usa <code>for-each</code> para recorrer</li>
+                            <li>Inicializa <code>NOMINA</code> en 0</li>
+                        </ul>
+                    </aside>
+                </div>
+            </article>
+
+            <!-- EJemplo_4_9 -->
+            <article id="ejemplo_4_9" class="exercise-card">
+                <header class="exercise-header">
+                    <span class="exercise-badge">Matrices</span>
+                    <h2>Ejemplo 4.9: Arreglos Bidimensionales (Java)</h2>
+                    <p class="exercise-description">Cree una matriz 26×13 que combine letras ('a'-'z') con números (-5 a
+                        7).</p>
+                </header>
+                <div class="exercise-content">
+                    <section class="exercise-main">
+                        <h3 class="section-title">Diagrama de flujo</h3>
+                        <img src="Diagramas/EJemplo_4_9.png" alt="Diagrama EJemplo_4_9" class="flowchart-image">
+
+                        <h3 class="section-title">Datos del Problema</h3>
+                        <div class="data-section">
+                            <ul class="data-list">
+                                <li><strong>Dato de Entrada:</strong> Ninguno (generación automática)</li>
+                                <li><strong>Descripción de Datos:</strong> <code>String[26][13]</code> matriz</li>
+                                <li><strong>Salida Esperada:</strong> Elementos específicos y NTE (338)</li>
+                            </ul>
+                        </div>
+
+                        <h3 class="section-title">Requisitos de Implementación (Java)</h3>
+                        <ul class="requirements-list">
+                            <li>Crear matriz: <code>String[][] CADENA = new String[26][13]</code></li>
+                            <li>Bucles anidados para llenar matriz</li>
+                            <li>Combinar letra ('a' + i) con número (j - 5)</li>
+                            <li>Calcular NTE = 26 × 13 = 338</li>
+                            <li>Acceder a elementos específicos</li>
+                        </ul>
+
+                        <h3 class="section-title">Ejemplo de uso esperado</h3>
+                        <pre class="example-output"><span class="output">Elemento 1: b-3</span>
+<span class="output">Elemento 2: e4</span>
+<span class="output">Elemento 3: z7</span>
+<span class="output">NTE: 338</span></pre>
+                    </section>
+                    <aside class="exercise-sidebar">
+                        <h3>Notas rápidas (Java)</h3>
+                        <p class="note-text">Recuerda que:</p>
+                        <ul>
+                            <li>Aritmética char: <code>'a' + 1 = 'b'</code></li>
+                            <li>Índices empiezan en 0</li>
+                            <li>Casting con <code>(char)</code> y <code>(int)</code></li>
+                        </ul>
+                    </aside>
+                </div>
+            </article>
+
+            <!-- Ejemplo_5_7 -->
+            <article id="ejemplo_5_7" class="exercise-card">
+                <header class="exercise-header">
+                    <span class="exercise-badge">Bucles</span>
+                    <h2>Ejemplo 5.7: Registro de Lluvias (Java)</h2>
+                    <p class="exercise-description">Registre lluvias mensuales de un estado y calcule el total anual.
+                    </p>
+                </header>
+                <div class="exercise-content">
+                    <section class="exercise-main">
+                        <h3 class="section-title">Diagrama de flujo</h3>
+                        <img src="Diagramas/Ejemplo_5_7.png" alt="Diagrama Ejemplo_5_7" class="flowchart-image">
+
+                        <h3 class="section-title">Datos del Problema</h3>
+                        <div class="data-section">
+                            <ul class="data-list">
+                                <li><strong>Dato de Entrada:</strong> nombre (String), llumen[12] (double array)</li>
+                                <li><strong>Salida Esperada:</strong> Total de lluvias en el estado</li>
+                            </ul>
+                        </div>
+
+                        <h3 class="section-title">Requisitos de Implementación (Java)</h3>
+                        <ul class="requirements-list">
+                            <li>Leer nombre del estado con <code>Scanner</code></li>
+                            <li>Arreglo de 12 elementos para las lluvias</li>
+                            <li>Bucle <code>for</code> para solicitar cada mes</li>
+                            <li>Acumular total</li>
+                            <li>Imprimir resultado</li>
+                        </ul>
+
+                        <h3 class="section-title">Ejemplo de uso esperado</h3>
+                        <pre class="example-output">Ingrese el nombre del estado: <span class="input">Hidalgo</span>
+Lluvias mes 1: <span class="input">45.5</span>
+Lluvias mes 2: <span class="input">30.2</span>
+...
+Lluvias mes 12: <span class="input">48.3</span>
+<span class="output">Total lluvias en Hidalgo: 582.7</span></pre>
+                    </section>
+                    <aside class="exercise-sidebar">
+                        <h3>Notas rápidas (Java)</h3>
+                        <p class="note-text">Recuerda que:</p>
+                        <ul>
+                            <li>Usa <code>nextLine()</code> para String</li>
+                            <li>Meses del 1-12 para usuario, 0-11 en array</li>
+                            <li>Inicializa acumulador en 0</li>
+                        </ul>
+                    </aside>
+                </div>
+            </article>
+
+            <!-- MayorSueldo -->
+            <article id="mayor_sueldo" class="exercise-card">
+                <header class="exercise-header">
+                    <span class="exercise-badge">Algoritmos</span>
+                    <h2>Mayor Sueldo: Búsqueda del Mayor (Java)</h2>
+                    <p class="exercise-description">Encuentre el empleado con el mayor sueldo de un conjunto de
+                        empleados.</p>
+                </header>
+                <div class="exercise-content">
+                    <section class="exercise-main">
+                        <h3 class="section-title">Diagrama de flujo</h3>
+                        <img src="Diagramas/MayorSueldo.png" alt="Diagrama MayorSueldo" class="flowchart-image">
+
+                        <h3 class="section-title">Datos del Problema</h3>
+                        <div class="data-section">
+                            <ul class="data-list">
+                                <li><strong>Dato de Entrada:</strong> n (cantidad de empleados), numEmp, sue</li>
+                                <li><strong>Descripción:</strong> n: <code>int</code>, numEmp: <code>int</code>, sue:
+                                    <code>float</code></li>
+                                <li><strong>Salida:</strong> Número de empleado y sueldo mayor</li>
+                            </ul>
+                        </div>
+
+                        <h3 class="section-title">Requis itos de Implementación (Java)</h3>
+                        <ul class="requirements-list">
+                            <li>Usar <code>Scanner</code> para leer datos</li>
+                            <li>Inicializar <code>maSue = 0</code> y <code>maNum = 0</code></li>
+                            <li>Bucle <code>for</code> de 1 a n</li>
+                            <li>Comparar cada sueldo con <code>maSue</code></li>
+                            <li>Actualizar si es mayor</li>
+                            <li>Imprimir resultado</li>
+                        </ul>
+
+                        <h3 class="section-title">Ejemplo de uso esperado</h3>
+                        <pre class="example-output">Ingresar el numero de empleados: <span class="input">3</span>
+Ingrese el numero de empleado: <span class="input">101</span>
+Ingrese el sueldo: <span class="input">2500</span>
+Ingrese el numero de empleado: <span class="input">102</span>
+Ingrese el sueldo: <span class="input">3500</span>
+Ingrese el numero de empleado: <span class="input">103</span>
+Ingrese el sueldo: <span class="input">3000</span>
+<span class="output">Mayor numero de empleado: 102</span>
+<span class="output">Mayor sueldo: 3500.0</span></pre>
+                    </section>
+                    <aside class="exercise-sidebar">
+                        <h3>Notas rápidas (Java)</h3>
+                        <p class="note-text">Recuerda que:</p>
+                        <ul>
+                            <li>Inicializa acumuladores antes del bucle</li>
+                            <li>Comparación condicional dentro del bucle</li>
+                            <li>⚠️ Este código tiene un bug conocido</li>
+                        </ul>
+                    </aside>
+                </div>
+            </article>
+
+            <!-- PS_3_21 -->
+            <article id="ps_3_21" class="exercise-card">
+                <header class="exercise-header">
+                    <span class="exercise-badge">Lógica de Selección</span>
+                    <h2>PS 3.21: Candidatos Facultad Menor (Java)</h2>
+                    <p class="exercise-description">Evalúe múltiples condiciones para filtrar alumnos aptos para
+                        diferentes carreras.</p>
+                </header>
+                <div class="exercise-content">
+                    <section class="exercise-main">
+                        <h3 class="section-title">Diagrama de flujo</h3>
+                        <img src="Diagramas/PS_3_21.png" alt="Diagrama PS_3_21" class="flowchart-image">
+
+                        <h3 class="section-title">Datos del Problema</h3>
+                        <div class="data-section">
+                            <ul class="data-list">
+                                <li><strong>Entrada:</strong> N (alumnos), matriculas[], carreras[], semestres[],
+                                    promedios[]</li>
+                                <li><strong>Descripción:</strong> Arreglos paralelos de int y double</li>
+                                <li><strong>Salida:</strong> Lista de candidatos aprobados</li>
+                            </ul>
+                        </div>
+
+                        <h3 class="section-title">Requisitos de Implementación (Java)</h3>
+                        <ul class="requirements-list">
+                            <li>Leer N alumnos</li>
+                            <li>Crear 4 arreglos paralelos</li>
+                            <li>Carrera 1: sem>5 && prom>8.5</li>
+                            <li>Carrera 2/4: sem>6 && prom>8.8</li>
+                            <li>Carrera 3: sem>6 && prom>8.5</li>
+                            <li>Usar <code>switch</code> para nombres de carreras</li>
+                        </ul>
+
+                        <h3 class="section-title">Ejemplo de uso esperado</h3>
+                        <pre class="example-output">Ingrese el número de alumnos: <span class="input">2</span>
+--- Alumno 1 ---
+Matrícula: <span class="input">101</span>
+Carrera (1-4): <span class="input">1</span>
+Semestre: <span class="input">6</span>
+Promedio: <span class="input">9.0</span>
+--- Alumno 2 ---
+Matrícula: <span class="input">102</span>
+Carrera (1-4): <span class="input">2</span>
+Semestre: <span class="input">5</span>
+Promedio: <span class="input">9.5</span>
+
+<span class="output">--- Candidatos Aceptados ---</span>
+<span class="output">Matrícula: 101 (Economía)</span></pre>
+                    </section>
+                    <aside class="exercise-sidebar">
+                        <h3>Notas rápidas (Java)</h3>
+                        <p class="note-text">Recuerda que:</p>
+                        <ul>
+                            <li>Usa operadores lógicos: <code>&&</code>, <code>||</code></li>
+                            <li>Banderas booleanas para control</li>
+                            <li><code>switch</code> para mapear códigos</li>
+                        </ul>
+                    </aside>
+                </div>
+            </article>
+
+            <!-- PS_4_17 -->
+            <article id="ps_4_17" class="exercise-card">
+                <header class="exercise-header">
+                    <span class="exercise-badge">Bucles Anidados</span>
+                    <h2>PS 4.17: Tabla de Multiplicar (Java)</h2>
+                    <p class="exercise-description">Genere una tabla de multiplicar completa del 1 al 10.</p>
+                </header>
+                <div class="exercise-content">
+                    <section class="exercise-main">
+                        <h3 class="section-title">Diagrama de flujo</h3>
+                        <img src="Diagramas/PS_4_17.png" alt="Diagrama PS_4_17" class="flowchart-image">
+
+                        <h3 class="section-title">Datos del Problema</h3>
+                        <div class="data-section">
+                            <ul class="data-list">
+                                <li><strong>Entrada:</strong> Ninguna</li>
+                                <li><strong>Proceso:</strong> Dos bucles anidados de 1 a 10</li>
+                                <li><strong>Salida:</strong> Tabla de multiplicar formateada</li>
+                            </ul>
+                        </div>
+
+                        <h3 class="section-title">Requisitos de Implementación (Java)</h3>
+                        <ul class="requirements-list">
+                            <li>Bucle externo: i de 1 a 10</li>
+                            <li>Bucle interno: j de 1 a 10</li>
+                            <li>Calcular resultado = i * j</li>
+                            <li>Usar <code>printf</code> para formato</li>
+                            <li>Salto de línea después de cada fila</li>
+                        </ul>
+
+                        <h3 class="section-title">Ejemplo de uso esperado</h3>
+                        <pre class="example-output">Tabla de multiplicar del 1 al 10:
+<span class="output"> 1 x  1 =   1     1 x  2 =   2    ... 1 x 10 =  10</span>
+<span class="output"> 2 x  1 =   2     2 x  2 =   4    ... 2 x 10 =  20</span>
+<span class="output">...</span>
+<span class="output">10 x  1 =  10    10 x  2 =  20    ...10 x 10 = 100</span></pre>
+                    </section>
+                    <aside class="exercise-sidebar">
+                        <h3>Notas rápidas (Java)</h3>
+                        <p class="note-text">Recuerda que:</p>
+                        <ul>
+                            <li>Bucles anidados: filas y columnas</li>
+                            <li>Especificadores: <code>%2d</code>, <code>%3d</code></li>
+                            <li>Alineación de texto en consola</li>
+                        </ul>
+                    </aside>
+                </div>
+            </article>
+
+            <!-- Problema_4_1 -->
+            <article id="problema_4_1" class="exercise-card">
+                <header class="exercise-header">
+                    <span class="exercise-badge">Math & GUI</span>
+                    <h2>Problema 4.1: Arreglo Aleatorio (Java)</h2>
+                    <p class="exercise-description">Genere un arreglo de números aleatorios usando JOptionPane.</p>
+                </header>
+                <div class="exercise-content">
+                    <section class="exercise-main">
+                        <h3 class="section-title">Diagrama de flujo</h3>
+                        <img src="Diagramas/Problema_4_1.png" alt="Diagrama Problema_4_1" class="flowchart-image">
+
+                        <h3 class="section-title">Datos del Problema</h3>
+                        <div class="data-section">
+                            <ul class="data-list">
+                                <li><strong>Entrada:</strong> valorArray (1-500)</li>
+                                <li><strong>Proceso:</strong> Generar números aleatorios 1-100</li>
+                                <li><strong>Salida:</strong> Imprimir todos los números</li>
+                            </ul>
+                        </div>
+
+                        <h3 class="section-title">Requisitos de Implementación (Java)</h3>
+                        <ul class="requirements-list">
+                            <li>Usar <code>JOptionPane.showInputDialog()</code></li>
+                            <li>Validar: 1 <= valorArray <=500</li>
+                            <li><code>Math.random() * 100 + 1</code> para aleatorios</li>
+                            <li>Casting a <code>(int)</code></li>
+                            <li>Imprimir con comas</li>
+                        </ul>
+
+                        <h3 class="section-title">Ejemplo de uso esperado</h3>
+                        <pre class="example-output"><span class="comment">(Ventana emergente)</span>
+Ingresa la cantidad de valores: <span class="input">10</span>
+
+<span class="output">45, 23, 78, 91, 12, 65, 34, 88, 56, 42,</span></pre>
+                    </section>
+                    <aside class="exercise-sidebar">
+                        <h3>Notas rápidas (Java)</h3>
+                        <p class="note-text">Recuerda que:</p>
+                        <ul>
+                            <li><code>JOptionPane</code> para GUI simple</li>
+                            <li><code>Math.random()</code> devuelve 0.0-1.0</li>
+                            <li>Parsing: <code>Integer.parseInt()</code></li>
+                        </ul>
+                    </aside>
+                </div>
+            </article>
+
+            <!-- Problema_4_12 -->
+            <article id="problema_4_12" class="exercise-card">
+                <header class="exercise-header">
+                    <span class="exercise-badge">Lógica Matricial</span>
+                    <h2>Problema 4.12: Matriz Simétrica (Java)</h2>
+                    <p class="exercise-description">Verifique si una matriz cuadrada es simétrica (igual a su
+                        transpuesta).</p>
+                </header>
+                <div class="exercise-content">
+                    <section class="exercise-main">
+                        <h3 class="section-title">Diagrama de flujo</h3>
+                        <img src="Diagramas/Problema_4_12.png" alt="Diagrama Problema_4_12" class="flowchart-image">
+
+                        <h3 class="section-title">Datos del Problema</h3>
+                        <div class="data-section">
+                            <ul class="data-list">
+                                <li><strong>Entrada:</strong> N (dimensión 1-50), elementos de matriz N×N</li>
+                                <li><strong>Proceso:</strong> Verificar A[i][j] == A[j][i]</li>
+                                <li><strong>Salida:</strong> "Es simétrica" o "No es simétrica"</li>
+                            </ul>
+                        </div>
+
+                        <h3 class="section-title">Requisitos de Implementación (Java)</h3>
+                        <ul class="requirements-list">
+                            <li>Validar dimensión: 1 <= N <=50</li>
+                            <li>Crear matriz <code>int[][] A = new int[N][N]</code></li>
+                            <li>Llenar con bucles anidados</li>
+                            <li>Verificar con bandera BAND</li>
+                            <li>Usar <code>while</code> para eficiencia (detener al encontrar diferencia)</li>
+                        </ul>
+
+                        <h3 class="section-title">Ejemplo de uso esperado</h3>
+                        <pre class="example-output">Ingrese dimensión del arreglo: <span class="input">3</span>
+Elemento 1,1: <span class="input">1</span>
+Elemento 1,2: <span class="input">2</span>
+Elemento 1,3: <span class="input">3</span>
+Elemento 2,1: <span class="input">2</span>
+Elemento 2,2: <span class="input">4</span>
+Elemento 2,3: <span class="input">5</span>
+Elemento 3,1: <span class="input">3</span>
+Elemento 3,2: <span class="input">5</span>
+Elemento 3,3: <span class="input">6</span>
+<span class="output">La matriz es simétrica</span></pre>
+                    </section>
+                    <aside class="exercise-sidebar">
+                        <h3>Notas rápidas (Java)</h3>
+                        <p class="note-text">Recuerda que:</p>
+                        <ul>
+                            <li>Recorrido parcial con <code>while</code></li>
+                            <li>Bandera (flag) para detener</li>
+                            <li>Propiedad: A[i][j] == A[j][i]</li>
+                        </ul>
+                    </aside>
+                </div>
+            </article>
+
+            <!-- Alumnos -->
+            <article id="alumnos" class="exercise-card">
+                <header class="exercise-header">
+                    <span class="exercise-badge">Arreglos 3D</span>
+                    <h2>Alumnos: Sistema de Gestión (Java)</h2>
+                    <p class="exercise-description">Maneje un arreglo tridimensional para gestionar datos de alumnos
+                        universitarios.</p>
+                </header>
+                <div class="exercise-content">
+                    <section class="exercise-main">
+                        <h3 class="section-title">Diagrama de flujo</h3>
+                        <img src="Diagramas/Alumnos.png" alt="Diagrama Alumnos" class="flowchart-image">
+
+                        <h3 class="section-title">Datos del Problema</h3>
+                        <div class="data-section">
+                            <ul class="data-list">
+                                <li><strong>Entrada:</strong> UN1V[7][2][10] - 7 carreras, 2 semestres, 10 años</li>
+                                <li><strong>Proceso:</strong> Llenar datos y realizar búsquedas</li>
+                                <li><strong>Salida:</strong> Estadísticas y búsquedas específicas</li>
+                            </ul>
+                        </div>
+
+                        <h3 class="section-title">Requisitos de Implementación (Java)</h3>
+                        <ul class="requirements-list">
+                            <li>Crear arreglo 3D: <code>int[][][] UN1V = new int[7][2][10]</code></li>
+                            <li>Triple bucle anidado para llenado</li>
+                            <li>Buscar año con mayor ingreso total</li>
+                            <li>Buscar carrera con mayor ingreso en último año</li>
+                            <li>Buscar año con mayor ingreso en Economía</li>
+                            <li>Buscar semestre con mayor ingreso en Ing. Computación</li>
+                        </ul>
+
+                        <h3 class="section-title">Ejemplo de uso esperado</h3>
+                        <pre class="example-output">Ingrese el número de alumnos para la carrera 1, semestre 1, año 1: <span class="input">50</span>
+Ingrese el número de alumnos para la carrera 1, semestre 1, año 2: <span class="input">55</span>
+<span class="comment">... (total de 140 entradas)</span>
+
+<span class="output">Año con mayor ingreso total: 5</span>
+<span class="output">Carrera con mayor ingreso en último año: 4</span>
+<span class="output">Año con mayor ingreso en Economía: 7</span>
+<span class="output">Semestre con mayor ingreso en Ing. Computación (año 6): 1</span></pre>
+                    </section>
+                    <aside class="exercise-sidebar">
+                        <h3>Notas rápidas (Java)</h3>
+                        <p class="note-text">Recuerda que:</p>
+                        <ul>
+                            <li>Arreglos 3D son cubos de datos</li>
+                            <li>Triple bucle anidado</li>
+                            <li>Gestión de índices complej os</li>
+                        </ul>
+                    </aside>
+                </div>
+            </article>
+
+        </main>
+
+        <footer class="page-footer">
+            <p class="note-text">Regresa al <a href="#top">menú</a> para elegir otro ejercicio.</p>
+        </footer>
+    </div>
+</body>
+
+</html>

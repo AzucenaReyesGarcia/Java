@@ -1,0 +1,41 @@
+digraph PS_1_12 {
+    // Configuración general
+    graph [bgcolor=transparent, rankdir=TB, splines=ortho]
+    node [shape=box, style=filled, fillcolor=lightblue, fontname="Arial"]
+    edge [fontname="Arial", fontsize=10]
+    
+    // Nodos terminales
+    start [label="Inicio", shape=oval, fillcolor=lightgreen]
+    end [label="Fin", shape=oval, fillcolor=lightcoral]
+    
+    // Entrada coordenada P1
+    input1 [label="Ingrese coordenada X\ndel punto P1", shape=parallelogram]
+    store1 [label="x1 = entrada"]
+    input2 [label="Ingrese coordenada Y\ndel punto P1", shape=parallelogram]
+    store2 [label="y1 = entrada"]
+    
+    // Entrada coordenada P2
+    input3 [label="Ingrese coordenada X\ndel punto P2", shape=parallelogram]
+    store3 [label="x2 = entrada"]
+    input4 [label="Ingrese coordenada Y\ndel punto P2", shape=parallelogram]
+    store4 [label="y2 = entrada"]
+    
+    // Entrada coordenada P3
+    input5 [label="Ingrese coordenada X\ndel punto P3", shape=parallelogram]
+    store5 [label="x3 = entrada"]
+    input6 [label="Ingrese coordenada Y\ndel punto P3", shape=parallelogram]
+    store6 [label="y3 = entrada"]
+    
+    // Cálculo
+    calc [label="area = 0.5 * (x1*(y2-y3) +\nx2*(y3-y1) + x3*(y1-y2))"]
+    abs [label="area = |area|"]
+    
+    // Salida
+    output [label="Mostrar:\nEl área del triángulo es area", shape=parallelogram]
+    
+    // Conexiones
+    start -> input1 -> store1 -> input2 -> store2
+    store2 -> input3 -> store3 -> input4 -> store4
+    store4 -> input5 -> store5 -> input6 -> store6
+    store6 -> calc -> abs -> output -> end
+}

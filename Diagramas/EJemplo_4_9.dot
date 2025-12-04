@@ -1,0 +1,50 @@
+digraph EJemplo_4_9 {
+    // Configuración general
+    graph [bgcolor=transparent, rankdir=TB, splines=ortho]
+    node [shape=box, style=filled, fillcolor=lightblue, fontname="Arial"]
+    edge [fontname="Arial", fontsize=10]
+    
+    // Nodos terminales
+    start [label="Inicio", shape=oval, fillcolor=lightgreen]
+    end [label="Fin", shape=oval, fillcolor=lightcoral]
+    
+    // Inicialización
+    init1 [label="Crear arreglo\nCADENA[26][13]"]
+    calc [label="NTE = (z-a+1) * (7-(-5)+1)\n= 26 * 13"]
+    
+    // Loops
+    loopI [label="i < 26?", shape=diamond, fillcolor=lightyellow]
+    loopJ [label="j < 13?", shape=diamond, fillcolor=lightyellow]
+    
+    calcLet [label="letra = 'a' + i"]
+    calcNum [label="numero = j - 5"]
+    assign [label="CADENA[i][j] =\nletra + numero"]
+    incJ [label="j++"]
+    incI [label="i++"]
+    
+    // Acceso a elementos
+    access [label="Acceder a elementos específicos"]
+    get1 [label="elemento1 = CADENA['b'-'a'][-3-(-5)]"]
+    get2 [label="elemento2 = CADENA['e'-'a'][4-(-5)]"]
+    get3 [label="elemento3 = CADENA['z'-'a'][7-(-5)]"]
+    
+    // Salidas
+    out1 [label="Mostrar: Elemento 1", shape=parallelogram]
+    out2 [label="Mostrar: Elemento 2", shape=parallelogram]
+    out3 [label="Mostrar: Elemento 3", shape=parallelogram]
+    out4 [label="Mostrar: NTE", shape=parallelogram]
+    
+    // Conexiones
+    start -> init1 -> calc -> loopI
+    loopI -> loopJ [label="Sí"]
+    loopI -> access [label="No"]
+    
+    loopJ -> calcLet [label="Sí"]
+    loopJ -> incI [label="No"]
+    
+    calcLet -> calcNum -> assign -> incJ -> loopJ
+    incI -> loopI
+    
+    access -> get1 -> get2 -> get3
+    get3 -> out1 -> out2 -> out3 -> out4 -> end
+}
